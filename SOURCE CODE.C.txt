@@ -1,0 +1,44 @@
+#define SOUND_SENSOR A2
+#define LED1 7
+#define LED2 8
+#define LED3 9
+int pin =0;
+void setup() {
+  pinMode(LED1,OUTPUT);
+  pinMode(LED2,OUTPUT);
+  pinMode(LED3,OUTPUT);
+  
+}
+
+void loop() {
+  if(analogRead(SOUND_SENSOR)>200){
+    if(pin==4){
+      pin=0;
+    }
+    Led(pin);
+    pin++;   
+  }
+  
+}
+
+
+void Led(int pinNum){
+  switch(pinNum){
+      case 0 : digitalWrite(LED1,HIGH); delay(100);
+               break;
+
+      case 1 : digitalWrite(LED1,LOW);
+               digitalWrite(LED2,HIGH);  delay(100);
+               break;
+
+      case 2 : digitalWrite(LED2,LOW);
+               digitalWrite(LED3,HIGH);  delay(100);
+               break;
+
+      default : digitalWrite(LED1,LOW);
+                digitalWrite(LED2,LOW);
+                digitalWrite(LED3,LOW);
+                
+                 delay(100);
+  }
+}
